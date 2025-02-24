@@ -46,29 +46,43 @@ Push all your updates to your gitHub repo. Your repo should contain the followin
 import csv
 
 #open file
-
+infile = open('prospects.csv', 'r')
+reader = csv.reader(infile)
 
 
 #create csv object
+reader = csv.reader('prospects.csv')
 
+#outfile.write(f'Name: \nEmail: \nPhone: \nSalary:')
 
 
 #skip header row
-
+header = next(reader)
 
 
 
 #create a dictionary
-
+candidates_dict = {}
+for row in reader:
+    empID = row[0]
+    candidate = {
+        'name': row[1],
+        'gender': row[2],
+        'email': row[3],
+        'phone': row[4],
+        'salary': float(row[5])}
 
 
 # iterate through each row of the csv object using a for loop.
-
+for empID, candidate in candidates_dict.items():
+    if candidate['salary'] < 70000:
+        print(f"Name: {candidate['name']}, Salary: {candidate['salary']}")
 
 
     # check if salary is less than $70,000 and if it is add it to the
-    # dictionary
-   
+
+    #if salary < 70000:
+
 
 
 
@@ -86,7 +100,7 @@ import csv
 
 
 
-
+'''
 #display the wordcloud
 #NOTE: no need to touch the code below. If you install the library correctly, the below code will run and produce an image named 'john.png'.
 
@@ -103,3 +117,4 @@ wordcloud = wordcloud.generate(text)
 wordcloud = wordcloud.to_file("john.png")
 plt.imshow(wordcloud)
 plt.show()
+'''
